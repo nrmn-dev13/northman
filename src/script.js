@@ -24,7 +24,7 @@ const parameters = {}
 parameters.count = 200000
 parameters.size = 0.005
 parameters.radius = 5
-parameters.branches = 6
+parameters.branches = 8
 parameters.spin = 1
 parameters.randomness = 1.15
 parameters.randomnessPower = 5
@@ -190,8 +190,8 @@ const tick = () =>
     material.uniforms.uTime.value = elapsedTime
 
     // camera.position.x = 3 - Math.sin(elapsedTime);
-    // camera.position.y = 3 - Math.sin(elapsedTime);
-    camera.position.z = 3 - Math.sin(elapsedTime);
+    // camera.position.y = 3 - Math.sin(elapsedTime);    
+    camera.position.z = 3 + Math.sin(elapsedTime * 0.5) * 2.5;
 
     // Update controls
     controls.update()
