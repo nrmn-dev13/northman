@@ -22,7 +22,12 @@ module.exports = {
         template: path.resolve(__dirname, '../src/index.html'),
         minify: true
       }),
-      new MiniCSSExtractPlugin()
+      new MiniCSSExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: "style.css",
+        chunkFilename: "[id].css",
+      })
     ],
   module:
   {
@@ -47,11 +52,9 @@ module.exports = {
         // CSS
         {
           test: /\.s[ac]ss$/i,
-          use: [
-            // fallback to style-loader in development
-            process.env.NODE_ENV !== "production"
-              ? "style-loader"
-              : MiniCssExtractPlugin.loader,
+          use: [{
+              loader: MiniCSSExtractPlugin.loader
+            },
             "css-loader",
             "sass-loader",
           ]
