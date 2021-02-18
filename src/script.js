@@ -24,11 +24,11 @@ const parameters = {}
 parameters.count = 200000
 parameters.size = 0.005
 parameters.radius = 5
-parameters.branches = 3
+parameters.branches = 6
 parameters.spin = 1
-parameters.randomness = 0.2
-parameters.randomnessPower = 3
-parameters.insideColor = '#ff6030'
+parameters.randomness = 1.15
+parameters.randomnessPower = 5
+parameters.insideColor = '#2f0303'
 parameters.outsideColor = '#1b3984'
 
 let geometry = null
@@ -188,6 +188,10 @@ const tick = () =>
 
     // Update material
     material.uniforms.uTime.value = elapsedTime
+
+    // camera.position.x = 3 - Math.sin(elapsedTime);
+    // camera.position.y = 3 - Math.sin(elapsedTime);
+    camera.position.z = 3 - Math.sin(elapsedTime);
 
     // Update controls
     controls.update()
