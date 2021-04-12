@@ -22,7 +22,7 @@ const scene = new THREE.Scene()
  * Water
  */
 // Geometry
-const waterGeometry = new THREE.PlaneGeometry(2, 2, 512, 512)
+const waterGeometry = new THREE.PlaneGeometry(5, 5, 512, 512)
 
 // Colors
 debugObject.depthColor = '#186691'
@@ -72,6 +72,10 @@ gui.add(waterMaterial.uniforms.uColorMultiplier, 'value').min(0).max(10).step(0.
 // Mesh
 const water = new THREE.Mesh(waterGeometry, waterMaterial)
 water.rotation.x = - Math.PI * 0.5
+water.rotation.z = 2.4
+gui.add(water.rotation, 'x').min(-100).max(100).step(0.001).name('xRotation')
+gui.add(water.rotation, 'y').min(-100).max(100).step(0.001).name('yRotation')
+gui.add(water.rotation, 'z').min(-100).max(100).step(0.001).name('zRotation')
 scene.add(water)
 
 /**
