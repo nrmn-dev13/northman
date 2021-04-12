@@ -1,6 +1,12 @@
 .section {
   position: relative;
   z-index: 1;
+  margin: 0 64px;
+  &.section--intro {
+    height: 100vh;
+    display: flex;
+    align-items: center;    
+  }
 }
 .webgl {
   position: fixed;
@@ -9,7 +15,12 @@
   outline: none;
   z-index: 0;
 }
-.test {
-  color: red;
-  font-family: 'Playfair Display', serif;
+.title {
+  color: black;
+  font-size: 86px;
+  font-family: 'Nanum Myeongjo', serif;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: .2rem;
+  padding: 0 32px;
 }
