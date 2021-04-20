@@ -25,8 +25,8 @@ const scene = new THREE.Scene()
 const waterGeometry = new THREE.PlaneGeometry(5, 5, 512, 512)
 
 // Colors
-debugObject.depthColor = '#186691'
-debugObject.surfaceColor = '#9bd8ff'
+debugObject.depthColor = '#ff5965'
+debugObject.surfaceColor = '#1f1657'
 
 gui.addColor(debugObject, 'depthColor').onChange(() => { waterMaterial.uniforms.uDepthColor.value.set(debugObject.depthColor) })
 gui.addColor(debugObject, 'surfaceColor').onChange(() => { waterMaterial.uniforms.uSurfaceColor.value.set(debugObject.surfaceColor) })
@@ -41,10 +41,10 @@ const waterMaterial = new THREE.ShaderMaterial({
 
     uBigWavesElevation: { value: 0.2 },
     uBigWavesFrequency: { value: new THREE.Vector2(4, 1.5) },
-    uBigWavesSpeed: { value: 0.75 },
+    uBigWavesSpeed: { value: 1.5 },
 
     uSmallWavesElevation: { value: 0.15 },
-    uSmallWavesFrequency: { value: 3 },
+    uSmallWavesFrequency: { value: 1.5 },
     uSmallWavesSpeed: { value: 0.2 },
     uSmallIterations: { value: 4 },
 
@@ -71,8 +71,8 @@ gui.add(waterMaterial.uniforms.uColorMultiplier, 'value').min(0).max(10).step(0.
 
 // Mesh
 const water = new THREE.Mesh(waterGeometry, waterMaterial)
-water.rotation.x = - Math.PI * 0.5
-water.rotation.z = 2.38
+water.rotation.x = -1.8 
+water.rotation.y = -0.18 
 gui.add(water.rotation, 'x').min(-100).max(100).step(0.001).name('xRotation')
 gui.add(water.rotation, 'y').min(-100).max(100).step(0.001).name('yRotation')
 gui.add(water.rotation, 'z').min(-100).max(100).step(0.001).name('zRotation')
