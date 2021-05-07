@@ -1,7 +1,51 @@
 @import './component/text.scss';
+@import './component/grid.scss';
+@import './component/section.scss';
 
 *
 {
     margin: 0;
     padding: 0;
 }
+.webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+    z-index: 0;
+  }
+  .image {
+    &__wrapper {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &--rounded {
+        border-radius: 50%;
+      }
+      &--lg {
+        width: 100%;
+        height: auto;
+      }
+    }
+    &__content {
+      width: 100%;
+      height: auto;
+    }
+    &__overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #ff5965;
+      opacity: 0;
+      transition: opacity 400ms ease-in-out;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
