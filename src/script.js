@@ -4,7 +4,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
 import waterVertexShader from './shaders/water/vertex.glsl'
 import waterFragmentShader from './shaders/water/fragment.glsl'
-
 /**
  * Base
  */
@@ -25,8 +24,8 @@ const scene = new THREE.Scene()
 const waterGeometry = new THREE.PlaneGeometry(5, 5, 512, 512)
 
 // Colors
-debugObject.depthColor = '#ff5965'
-debugObject.surfaceColor = '#1f1657'
+debugObject.depthColor = '#ffffff'
+debugObject.surfaceColor = '#bebebe'
 
 gui.addColor(debugObject, 'depthColor').onChange(() => { waterMaterial.uniforms.uDepthColor.value.set(debugObject.depthColor) })
 gui.addColor(debugObject, 'surfaceColor').onChange(() => { waterMaterial.uniforms.uSurfaceColor.value.set(debugObject.surfaceColor) })
@@ -71,7 +70,7 @@ gui.add(waterMaterial.uniforms.uColorMultiplier, 'value').min(0).max(10).step(0.
 
 // Mesh
 const water = new THREE.Mesh(waterGeometry, waterMaterial)
-water.rotation.x = -1.8 
+water.rotation.x = -1.8
 water.rotation.y = -0.18 
 gui.add(water.rotation, 'x').min(-100).max(100).step(0.001).name('xRotation')
 gui.add(water.rotation, 'y').min(-100).max(100).step(0.001).name('yRotation')
@@ -105,7 +104,7 @@ window.addEventListener('resize', () => {
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(1, 1, 1)
+camera.position.set(1, 1, 1.5)
 scene.add(camera)
 
 // Controls
@@ -116,10 +115,12 @@ controls.enableDamping = true
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
-  canvas: canvas
+  canvas: canvas,
+  alpha: true
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+renderer.setClearColor( 0x000000, 0 );
 
 /**
  * Animate
